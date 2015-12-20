@@ -22,3 +22,12 @@ Optional arguments
 - ps: a postscript for the letter
 - language: language for hyphernation (see babel for options) (default is
   UKenglish)
+
+## Requirements
+You'll need [TeX Live](https://www.tug.org/texlive/) and [Pandoc](http://pandoc.org).
+
+## Convert markdown to pdf letter
+To convert just call pandoc with the template:
+```
+$ pandoc alice.md --latex-engine=pdflatex --template=template.tex -o letter.pdf
+```
