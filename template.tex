@@ -1,0 +1,70 @@
+% Required arguments
+% toname: addresse
+% toaddress: addresse's address
+
+% Recommended arguments
+% from: name of sender
+% fromaddress: address of sender
+
+% Optional arguments
+% phone: phone number of sender
+% email: email address of sender
+% signature: signature of the sender (defaults to [from] name)
+% greeting: the greeting (default is Dear [toname],)
+% closing: the closing (default is Yours sincerely)
+% ps: a postscript for the letter
+% language: language for hyphernation (see babel for options)
+%           default is UKenglish
+\documentclass[version=last,
+               fontsize=12pt,
+               foldmarks=false,
+               fromalign=right,
+               backaddress=false]{scrlttr2}
+\usepackage[$if(language)$
+            $language$
+            $else$UKenglish
+            $endif$]{babel}
+
+\begin{document}
+
+  $if(from)$
+  \setkomavar{fromname}{$from$}
+  $endif$
+  $if(address)$
+  \setkomavar{fromaddress}{$for(address)$
+                           $address$
+                           $sep$\\
+                           $endfor$}
+  $endif$
+  $if(phone)$
+  \setkomavar{fromphone}{$phone$}
+  $endif$
+  $if(email)$
+  \setkomavar{fromemail}{$email$}
+  $endif$
+  $if(signature)$
+  \setkomavar{signature}{$signature$}
+  $else$$if(from)$
+  \setkomavar{signature}{$from$}
+  $endif$$endif$
+  \begin{letter}{$toname$\\
+                 $for(toaddress)$
+                 $toaddress$
+                 $sep$\\
+                 $endfor$}
+
+    \opening{$if(greeting)$$greeting$$else$Dear $toname$,$endif$}
+
+    $body$
+
+    \closing{$if(closing)$$closing$$else$Yours sincerely,$endif$}
+
+    % closing
+
+    $if(ps)$
+    \ps
+    $ps$
+    $endif$
+
+  \end{letter}
+\end{document}
