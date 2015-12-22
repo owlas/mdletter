@@ -20,7 +20,11 @@
                foldmarks=false,
                fromalign=right,
                backaddress=false,
-               parskip=true]{scrlttr2}
+               parskip=true,
+               firstfoot=false,
+               enlargefirstpage=true
+               $if(phone)$,fromphone=true$endif$
+               $if(email)$,fromemail=true$endif$]{scrlttr2}
 \usepackage[$if(language)$
             $language$
             $else$UKenglish
