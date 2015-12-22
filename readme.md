@@ -22,6 +22,7 @@ Optional arguments
 - ps: a postscript for the letter
 - language: language for hyphernation (see babel for options) (default is
   UKenglish)
+- fontsize: e.g. 10pt
 
 ## Requirements
 You'll need [TeX Live](https://www.tug.org/texlive/) and [Pandoc](http://pandoc.org).

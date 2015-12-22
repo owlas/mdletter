@@ -16,7 +16,7 @@
 % language: language for hyphernation (see babel for options)
 %           default is UKenglish
 \documentclass[version=last,
-               fontsize=12pt,
+               fontsize=$if(fontsize)$$fontsize$$else$12pt$endif$,
                foldmarks=false,
                fromalign=right,
                backaddress=false,
